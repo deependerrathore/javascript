@@ -1,3 +1,6 @@
+/*
+Variable and data types 
+*/
 var firstName = 'Deepender';
 console.log(firstName);
 
@@ -14,5 +17,6 @@ console.log(job);
 job = 'Teacher';
 console.log(job);
 
+//Variable naming convention
 var _3years = 3;
 var $4years = 4;
