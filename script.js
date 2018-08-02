@@ -1,28 +1,32 @@
-/*
-Variable mutation and type coercian
-*/
+/**
+ * Basic Operators
+ */
 
-var firstName = 'Deepender';
-var age  =27;
+//Math operators
+var now, yearJohn,yearMark;
+now = 2018;
+ageJohn = 28;
+ageMark = 33;
+yearJohn = now - 28;
+yearMark = now - 33; 
+console.log(yearJohn);
+console.log(yearMark);
 
-//Type coercian
-console.log(firstName + ' ' + age);
-
-var job, isMarried;
-
-job = 'Teacher';
-isMarried = false;
-
-console.log(firstName + ' is ' + age + ' year old ' + job + ' . Is he married? ' + isMarried);
-
-
-//Variable mutation
-age = 'twenty eight';
-job = 'Engineer';
+console.log(now + 2)
+console.log(now * 2)
+console.log(now / 2)
 
 
-alert(firstName + ' is ' + age + ' year old ' + job + ' . Is he married? ' + isMarried);
+//Logical operators
+var johnOlder = ageJohn < ageMark;
+console.log(johnOlder);
 
-var lastName = prompt("What is his last Name?");
 
-console.log(firstName + ' ' + lastName);
+//typeof operator
+console.log(typeof johnOlder);
+console.log(typeof ageJohn);
+console.log(typeof "My name is deep");
+
+var x;
+console.log(typeof x);
+  
