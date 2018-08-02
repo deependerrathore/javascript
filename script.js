@@ -1,22 +1,28 @@
 /*
-Variable and data types 
+Variable mutation and type coercian
 */
+
 var firstName = 'Deepender';
-console.log(firstName);
+var age  =27;
 
-var secondName = 'Rathore';
-var age = 27;
+//Type coercian
+console.log(firstName + ' ' + age);
 
-var fullAge = true;
-console.log(fullAge);
-
-var job;
-console.log(job);
-
+var job, isMarried;
 
 job = 'Teacher';
-console.log(job);
+isMarried = false;
 
-//Variable naming convention
-var _3years = 3;
-var $4years = 4;
+console.log(firstName + ' is ' + age + ' year old ' + job + ' . Is he married? ' + isMarried);
+
+
+//Variable mutation
+age = 'twenty eight';
+job = 'Engineer';
+
+
+alert(firstName + ' is ' + age + ' year old ' + job + ' . Is he married? ' + isMarried);
+
+var lastName = prompt("What is his last Name?");
+
+console.log(firstName + ' ' + lastName);
