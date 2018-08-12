@@ -11,15 +11,15 @@ Mark and John are trying to compare their BMI (Body Mass Index), which is calcul
 
 */
 var markMassInKg = prompt("Enter Mark weigh in Kg:"); // 80KG
-var johnMassInKg = prompt("Enter John weight in Kg:"); // 100KG
-
-
 var markHeightInMeter = prompt("Enter Mark height in meter:"); //1.6
-var johnHeightInMeter = prompt("Enter John height in meter:"); //1.95
 
+
+var johnMassInKg = prompt("Enter John weight in Kg:"); // 100KG
+var johnHeightInMeter = prompt("Enter John height in meter:"); //1.95
 
 var markBMI = markMassInKg / (markHeightInMeter * markHeightInMeter); // 29.3847566575
 var johnBMI = johnMassInKg / (johnHeightInMeter * johnHeightInMeter); //26.2984878369
+
 
 var isMarkBMIHigher = markBMI > johnBMI;
 
