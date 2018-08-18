@@ -23,4 +23,9 @@ var johnBMI = johnMassInKg / (johnHeightInMeter * johnHeightInMeter); //26.29848
 
 var isMarkBMIHigher = markBMI > johnBMI;
 
-console.log("Mark BMI is " + markBMI +" and John BMI is " + johnBMI +". Mark BMI is heigher than John: "+isMarkBMIHigher);
+if (markBMI > johnBMI) {
+    console.log('Mark\'s BMI is greater than John\'s');
+    
+}else{
+    console.log('John\'s BMI is greater than Mark\'s');
+}
