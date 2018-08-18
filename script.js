@@ -1,68 +1,17 @@
 /*****************************
-* Ternary Operator and switch statement
+* Truthy and Falsy values and equality operator
 */
 
-var firstName = "Deep";
-var age = 11;
+//Falsy: undefined, null, 0 , '', NaN
+//Truthy: all other values
 
-//Ternary Operator
-age >= 18 ? console.log(firstName + ' drinks beer')
-: console.log(firstName + ' drinks juice');
+var height;
 
-
-var drink = age >= 18 ? 'beer': 'juice';
-
-console.log(drink);
-/*
-if(age>= 18){
-    drink = 'beer';
-}else{
-    drink = 'juice';
-}
-*/
-
-
-//Switch Operator
-var job = 'designer';
-
-switch (job) {
-    case 'teacher':
-        console.log(firstName + ' is a good at teaching');
-        break;
-    case 'designer':
-        console.log(firstName + ' is good at disigning new websites');
-        break;
-    default:
-        console.log(firstName + ' is good for nothing');
-        break;
-}
-
-switch (true) {
-    case age < 12:
-        console.log('John is a boy');
-        break;
-    case age >= 12 && age <20:
-        console.log('John is a teenage');
-        break;
-    case age >= 20 && age <=30:
-        console.log('John is a young man');
-        break;
-    default:
-        console.log('John is a man');
-        break;
-}
-
-/*
-if(age < 12){
-    console.log('John is a boy');
-    
-}else if (age >= 12 && age <20){
-    console.log('John is a teenage');
-    
-}else if (age >= 20 && age <=30){
-    console.log('John is a young man');
+if(height){
+    console.log('Height has been defined');
     
 }else{
-    console.log('John is a man');
+    console.log('Height has NOT been defined');
+    
 }
-*/   
+
