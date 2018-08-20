@@ -5,7 +5,7 @@
 //Falsy: undefined, null, 0 , '', NaN
 //Truthy: all other values
 
-var height = ''; // Since 0 is falsy value the loop will still go to not defined
+var height = 23; // Since 0 is falsy value the loop will still go to not defined
 
 if(height || height === 0){
     console.log('Height has been defined');
@@ -15,3 +15,11 @@ if(height || height === 0){
     
 }
 
+
+//equality operator
+if(height === '23'){
+    console.log('the == operator does the type coercion!');
+}else{
+    console.log('the === opetrator does not do the type coercion');
+    
+}
