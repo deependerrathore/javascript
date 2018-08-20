@@ -13,5 +13,14 @@ John and Mike both play basketball in different teams. In the latest 3 games, Jo
 */
 var scoreJohn = (89+120+103)/3;
 var scoreMike = (116+94+123)/3;
+console.log(scoreJohn,scoreMike);
 
-scoreJohn > scoreMike ? console.log('John avg is more than Mike' + scoreJohn) : console.log('Mike avg is more than John: '+ scoreMike);
+if (scoreJohn > scoreMike) {
+    console.log('John\'s wins the match with ' + scoreJohn + ' points');
+    
+}else if(scoreMike > scoreJohn){
+    console.log('Mike\'s wins the match with ' + scoreJohn + ' points');
+}else{
+    console.log('the match is draw');
+    
+}
