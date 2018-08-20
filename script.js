@@ -13,14 +13,17 @@ John and Mike both play basketball in different teams. In the latest 3 games, Jo
 */
 var scoreJohn = (89+120+103)/3;
 var scoreMike = (116+94+123)/3;
-console.log(scoreJohn,scoreMike);
+var scoreMary = (97+131+105)/3;
+console.log(scoreJohn,scoreMike,scoreMary);
 
-if (scoreJohn > scoreMike) {
+if (scoreJohn > scoreMike && scoreJohn > scoreMary) {
     console.log('John\'s wins the match with ' + scoreJohn + ' points');
     
-}else if(scoreMike > scoreJohn){
+}else if(scoreMike > scoreJohn && scoreMike > scoreMary){
     console.log('Mike\'s wins the match with ' + scoreJohn + ' points');
+}else if( scoreMary > scoreJohn && scoreMary > scoreMike){
+    console.log('Mary\'s wins the match with ' + scoreJohn + ' points');
+    
 }else{
     console.log('the match is draw');
-    
 }
