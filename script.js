@@ -1,31 +1,20 @@
 /*
-* Object and Property
+* Object and Methods
 */
 
-//Object literal
+
 var john = {
     firstName: 'john',
     lastName: 'smith',
-    birthYear: 1992,
+    birthYear: 1991,
     familyMember: ['jane', 'mark','ted'],
     isMarried: false,
-    job: 'teacher'
+    job: 'teacher',
+    calcAge: function(){
+        return 2018 - this.birthYear;
+    }
 };
 
-console.log(john.firstName);
-console.log(john['lastName']);
-var x = 'birthYear';
-console.log(john[x]);
+console.log(john.calcAge());
 
-john.job = 'driver';
-john['isMarried'] = true;
-
-console.log(john);
-
-//new Object
-var jane = new Object();
-jane.firstName = 'Jane';
-jane.birthYear = 1963;
-jane['lastName'] = 'smith';
-
-console.log(jane);
+john.age = john.calcAge(); // setting up the age property
