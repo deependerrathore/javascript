@@ -1,34 +1,31 @@
-/*****************************
-* CODING CHALLENGE 3
-*/
-
 /*
-John and his family went on a holiday and went to 3 different restaurants. The bills were $124, $48 and $268.
-To tip the waiter a fair amount, John created a simple tip calculator (as a function). He likes to tip 20% of the bill when the bill is less than $50, 15% when the bill is between $50 and $200, and 10% if the bill is more than $200.
-In the end, John would like to have 2 arrays:
-1) Containing all three tips (one for each bill)
-2) Containing all three final paid amounts (bill + tip).
-(NOTE: To calculate 20% of a value, simply multiply it with 20/100 = 0.2)
+* Object and Property
 */
 
-function tipCalculator(bill){
-    var percentage;
-    if(bill < 50){
-        percentage =  .20;
-    }else if(bill >= 50 && bill < 200){
-        percentage = .15;
-    }else if ( bill >= 200){
-        percentage = .10;
-    }else{
-        percentage = 0;
-    }
-    return bill * percentage; 
-    
-}
-var bills = [55,200,268];
-var tips = [tipCalculator(bills[0]),tipCalculator(bills[1]),tipCalculator(bills[2])];
+//Object literal
+var john = {
+    firstName: 'john',
+    lastName: 'smith',
+    birthYear: 1992,
+    familyMember: ['jane', 'mark','ted'],
+    isMarried: false,
+    job: 'teacher'
+};
 
+console.log(john.firstName);
+console.log(john['lastName']);
+var x = 'birthYear';
+console.log(john[x]);
 
-var paidAmt = [bills[0] + tips[0],bills[1] + tips[1],bills[2] + tips[2] ];
+john.job = 'driver';
+john['isMarried'] = true;
 
-console.log(bills,tips,paidAmt);
+console.log(john);
+
+//new Object
+var jane = new Object();
+jane.firstName = 'Jane';
+jane.birthYear = 1963;
+jane['lastName'] = 'smith';
+
+console.log(jane);
