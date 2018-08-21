@@ -26,7 +26,7 @@ console.log(x);
 
 document.querySelector('.dice').style.display = 'none';
 
-function btn(){
+
+document.querySelector('.btn-roll').addEventListener('click',btn(){
     //TODO
-}
-document.querySelector('.btn-roll').addEventListener('click',btn); //we don't have to put () as we are not calling this function a callback will happen by event
+}); //anonymous function
