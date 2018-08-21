@@ -1,28 +1,26 @@
 /*
-* Functions
+* Function Statements and Expressions
 */
 
-function calculateAge(birthyear) {
-    return 2018 - birthyear;
-}
 
-var ageJohn = calculateAge(1992);
-var ageMark = calculateAge(1950);
-var ageJane = calculateAge(1999);
+//Function declaration
+// function whatDoYouDo(job, firstName) {}
 
-console.log(ageJohn , ageMark,ageJane);
 
-function ageUntilRetirement(firstname,year) {
-    var age = calculateAge(year);
-    var retirement = 65 - age;
-    if (retirement > 0) {
-        console.log(firstname + ' retires in ' + retirement + ' years.');
-    } else {
-        console.log(firstname + ' is already retired');
+//Function expression
+var whatDoYouDo = function(job,firstName){
+    switch (job) {
+        case 'teacher':
+            return firstName + ' teaches kids how to code';
+        case 'driver':
+            return firstName + ' drives a cab in uber';
+        case 'designer':
+            return firstName + ' know how to design a website';
+        default:
+            return firstName + ' does nothing';
     }
-    
 }
 
-ageUntilRetirement('john',1992);
-ageUntilRetirement('mark',1950);
-ageUntilRetirement('jane',1999);
+console.log(whatDoYouDo('driver','john'));
+console.log(whatDoYouDo('designer','mark'));
+console.log(whatDoYouDo('retired','jane'));
