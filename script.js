@@ -12,19 +12,20 @@ In the end, John would like to have 2 arrays:
 */
 
 function tipCalculator(bill){
-
-        if(bill < 50){
-            return bill * .20;
-        }else if(bill >= 50 && bill < 200){
-            return bill * .15;
-        }else if ( bill >= 200){
-            return bill * .10;
-        }else{
-            return 0;
-        }
-
+    var percentage;
+    if(bill < 50){
+        percentage =  .20;
+    }else if(bill >= 50 && bill < 200){
+        percentage = .15;
+    }else if ( bill >= 200){
+        percentage = .10;
+    }else{
+        percentage = 0;
+    }
+    return bill * percentage; 
+    
 }
-var bills = [124,48,268];
+var bills = [55,200,268];
 var tips = [tipCalculator(bills[0]),tipCalculator(bills[1]),tipCalculator(bills[2])];
 
 
