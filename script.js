@@ -22,22 +22,24 @@ Mark likes to tip 20% of the bill when the bill is less than $100, 10% when the 
 
 var john  = {
     fullname: 'John Smith',
-    bill: [124,48,268,180,42],
+    bill: [1524,48,268,180,42],
     calculateTip: function(){
         this.tips = [];
         this.amt= [];
         for (let i = 0; i < this.bill.length; i++) {
             
-            if(this.bill[i] < 50){
+            var percentage;
+            var bill = this.bill[i];
+            if(bill < 50){
                 percentage = .20;
-            }else if(this.bill[i] >= 50 && this.bill[i] < 200){
+            }else if(bill >= 50 && bill < 200){
                 percentage = .15;
             }else{
                 percentage = .10;
             }
             
-            this.tips[i] = this.bill[i] * percentage;
-            this.amt[i] = this.tips[i]+this.bill[i];
+            this.tips[i] = bill * percentage;
+            this.amt[i] = this.tips[i]+bill;
         }
     }
 }
@@ -50,17 +52,18 @@ var mark  = {
         this.tips = [];
         this.amt= [];
         for (let i = 0; i < this.bill.length; i++) {
-            
-            if(this.bill[i] < 100){
+            var percentage;
+            var bill = this.bill[i];
+            if(bill < 100){
                 percentage = .20;
-            }else if(this.bill[i] >= 100 && this.bill[i] < 300){
+            }else if(bill >= 100 && bill < 300){
                 percentage = .10;
             }else{
                 percentage = .25;
             }
             
-            this.tips[i] = this.bill[i] * percentage;
-            this.amt[i] = this.tips[i]+this.bill[i];
+            this.tips[i] = bill * percentage;
+            this.amt[i] = this.tips[i]+bill;
         }
     }
 }
@@ -79,8 +82,18 @@ function calculateAvg(tips){
     }
     return sum/tips.length;
 }
-john.average = calculateAvg(john.bill);
-mark.average = calculateAvg(mark.bill);
-
+john.average = calculateAvg(john.tips);
+mark.average = calculateAvg(mark.tips);
+ 
 console.log(john);
 console.log(mark);
+
+if(john.average > mark.average){
+    console.log(john.fullname + '\'s family pays more tip than '+ mark.fullname+'\'s');
+    
+}else if(mark.average > john.average){
+    console.log(mark.fullname + '\'s family pays more tip than '+ john.fullname+'\'s');
+}else{
+    console.log('both family paid the same tips');
+    
+}
