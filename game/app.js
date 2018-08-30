@@ -34,23 +34,23 @@ diceDOM.style.display = 'none';
 document.querySelector('.btn-roll').addEventListener('click',function(){
     // 1. Random number
     var dice = Math.floor((Math.random() * 6 )) + 1;
-
+    
     // 2. Display the result
     diceDOM.style.display = 'block';
     diceDOM.src = 'dice-'+dice+'.png';
-
+    
     //3. Update the round score IF the rolled number was NOT a 1
     if(dice !== 1){
         //add score
         roundScore += dice;
         document.querySelector('#current-'+activePlayer).textContent = roundScore;
     }else{
-    //next player
-    
+        //next player
+        
         scores[activePlayer] += roundScore; //Global score
-
+        
         document.querySelector('#score-'+activePlayer).textContent = scores[activePlayer];
-
+        
         document.getElementById('current-'+activePlayer).textContent = '0';
         
         //document.querySelector('.player-'+activePlayer+'-panel').classList.remove('active');
@@ -60,15 +60,32 @@ document.querySelector('.btn-roll').addEventListener('click',function(){
         //document.querySelector('.player-'+activePlayer+'-panel').classList.add('active');
         document.querySelector('.player-'+activePlayer+'-panel').classList.toggle('active');
         diceDOM.style.display = 'none'; 
-
         
         
-
+        
+        
         
         
     }
-
-    document.querySElectory('btn-hold').addEventListener('click',function(){
-
-    });
+    
+    
 }); 
+
+document.querySelector('.btn-hold').addEventListener('click',function(){
+    //Add CURRENT score to GLOBAL score
+    scores[activePlayer] += roundScore; //Global score
+    
+    //Update the UI
+    document.querySelector('#score-'+activePlayer).textContent = scores[activePlayer];
+    
+    document.getElementById('current-'+activePlayer).textContent = '0';
+    
+    //document.querySelector('.player-'+activePlayer+'-panel').classList.remove('active');
+    document.querySelector('.player-'+activePlayer+'-panel').classList.toggle('active');
+    activePlayer === 0 ? activePlayer = 1 : activePlayer = 0;
+    roundScore = 0;
+    //document.querySelector('.player-'+activePlayer+'-panel').classList.add('active');
+    document.querySelector('.player-'+activePlayer+'-panel').classList.toggle('active');
+    diceDOM.style.display = 'none'; 
+    //Check if the player won
+});
