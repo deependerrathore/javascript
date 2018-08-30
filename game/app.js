@@ -45,16 +45,25 @@ document.querySelector('.btn-roll').addEventListener('click',function(){
         roundScore += dice;
         document.querySelector('#current-'+activePlayer).textContent = roundScore;
     }else{
+    //next player
+    
         scores[activePlayer] += roundScore;
+
         document.querySelector('#score-'+activePlayer).textContent = scores[activePlayer];
-        document.querySelector('#current-'+activePlayer).textContent = '0';
+
+        document.getElementById('current-'+activePlayer).textContent = '0';
+        
+        document.querySelector('.player-'+activePlayer+'-panel').classList.remove('active');
+        
+        activePlayer === 0 ? activePlayer = 1 : activePlayer = 0;
+
+        document.querySelector('.player-'+activePlayer+'-panel').classList.add('active');
+
+
         roundScore = 0;
-        //next player
-        if(activePlayer === 1){
-            activePlayer = 0;
-        }else{  
-            activePlayer = 1;
-        }
+        
+
+        
         
     }
 }); 
