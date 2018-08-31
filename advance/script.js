@@ -109,6 +109,7 @@ console.log(obj1.city);
 
 */
 
+/*
 
 //Passing function as an argument
 var years = [1990,2005,1963,1986,2011];
@@ -146,5 +147,35 @@ console.log(legalAges);
 
 var rates = arrayCalc(ages,maxHeartRate);
 console.log(rates);
+
+*/
+
+//Function return functions
+function interviewQuestion(job) {
+    if(job === 'teacher'){
+        return function(name){
+            console.log('What subject do you teach '+ name);
+            
+        }
+    }else if( job === 'designer'){
+        return function(name){
+            console.log(name +', Can you please tell me what is the meaning of UX design');
+        }
+    }else{
+        return function(name){
+            console.log('Hello '+ name +', Could you please tell me what do you do?');
+            
+        }
+    }
+}
+
+var teacherQuestions = interviewQuestion('teacher');
+
+teacherQuestions('john');
+
+interviewQuestion('designer')('deepak');
+
+interviewQuestion()('rinku');
+
 
 
