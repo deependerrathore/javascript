@@ -60,6 +60,7 @@ var jane = Object.create(personProto,{
 
 */
 
+/*
 
 //Premitive vs Objects
 
@@ -85,6 +86,7 @@ console.log(obj1.age);//prints 46
 console.log(obj2.age); //prints 46 as this is also referencing the same variable
 
 
+
 //fucntions
 
 var age = 27;
@@ -103,5 +105,46 @@ change(age,obj1);
 
 console.log(age);
 console.log(obj1.city);
+
+
+*/
+
+
+//Passing function as an argument
+var years = [1990,2005,1963,1986,2011];
+
+function arrayCalc(arr,fn){
+    arrRes = [];
+    for (let i = 0; i < arr.length; i++) {
+        arrRes.push(fn(arr[i]));
+    }
+
+    return arrRes;
+}
+
+function calculateAge(el){
+    return 2018 - el;
+}
+
+function isLegalAge(el){
+    return el >= 18;
+}
+
+function maxHeartRate(el){
+    if(el >= 18 && el <=81){
+        return Math.round(206.9 - (0.67 *el));
+    }else{
+        return -1;
+    }
+    
+}
+var ages = arrayCalc(years,calculateAge);
+console.log(ages);
+
+var legalAges = arrayCalc(ages,isLegalAge);
+console.log(legalAges);
+
+var rates = arrayCalc(ages,maxHeartRate);
+console.log(rates);
 
 
