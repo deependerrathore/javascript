@@ -11,24 +11,7 @@ GAME RULES:
 
 var scores, roundScore,activePlayer;
 
-scores = [0,0];
-roundScore = 0;
-activePlayer = 0;//setting this up as 0 so that we can access scores array easly
-winnerScoreLimit = 20;
-
-
-
-//document.querySelector('#current-'+activePlayer).textContent = dice;
-//document.querySelector('#current-'+activePlayer).innerHTML = '<em>'+dice+'</em>'; // if we want to set html
-
-//var x = document.querySelector('#score-'+activePlayer).textContent;
-//console.log(x);
-
-var diceDOM = document.querySelector('.dice');
-document.getElementById('score-0').textContent = '0';
-document.getElementById('score-1').textContent = '0';
-document.getElementById('current-0').textContent = '0';
-document.getElementById('current-1').textContent = '0';
+init();
 
 diceDOM.style.display = 'none';
 
@@ -56,7 +39,7 @@ document.querySelector('.btn-roll').addEventListener('click',function(){
 document.querySelector('.btn-hold').addEventListener('click',function(){
     //Add CURRENT score to GLOBAL score
     scores[activePlayer] += roundScore; 
-
+    
     //Update the UI
     document.querySelector('#score-'+activePlayer).textContent = scores[activePlayer]; //Displaying the global score
     
@@ -67,33 +50,43 @@ document.querySelector('.btn-hold').addEventListener('click',function(){
         diceDOM.style.display = 'none';
         document.querySelector('.player-'+activePlayer+'-panel').classList.add('winner');
         document.querySelector('.player-'+activePlayer+'-panel').classList.remove('active'); //Red dot will get removed from active player
-
+        
     }else{
         nextPlayer();
     }
     
     
-
+    
     
 });
 
 function nextPlayer() {
     
     document.getElementById('current-'+activePlayer).textContent = '0'; //Setting the current score to 0
-
+    
     document.querySelector('.player-'+activePlayer+'-panel').classList.toggle('active'); //Toggling the active class for player panel
-
+    
     activePlayer === 0 ? activePlayer = 1 : activePlayer = 0; //Changing the active player
-
+    
     roundScore = 0; //reseting the current score to 0
     
     document.querySelector('.player-'+activePlayer+'-panel').classList.toggle('active');//Toggling the active class for player panel
-
+    
     diceDOM.style.display = 'none'; //don't display dice after switch
 }
 
-function winner() {
+function init() {
+    scores = [0,0];
+    roundScore = 0;
+    activePlayer = 0;//setting this up as 0 so that we can access scores array easly
+    winnerScoreLimit = 20;
     
+    var diceDOM = document.querySelector('.dice');
+    
+    document.getElementById('score-0').textContent = '0';
+    document.getElementById('score-1').textContent = '0';
+    document.getElementById('current-0').textContent = '0';
+    document.getElementById('current-1').textContent = '0';
     
     
 }
