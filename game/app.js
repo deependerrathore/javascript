@@ -88,7 +88,7 @@ function init() {
     scores = [0,0];
     roundScore = 0;
     activePlayer = 0;//setting this up as 0 so that we can access scores array easly
-    winnerScoreLimit = 20;
+    winnerScoreLimit = 100;
     
     gamePlaying = true;
     
