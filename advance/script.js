@@ -34,6 +34,9 @@ console.log(jane.lastName);
 
 */
 
+
+
+/*
 //Object.create
 
 var personProto = {
@@ -54,3 +57,51 @@ var jane = Object.create(personProto,{
     yearOfBirth: {value: 1980},
     job: {value: 'Designer'}
 })
+
+*/
+
+
+//Premitive vs Objects
+
+//Premitive
+var a = 23;
+var b = a;
+
+a = 46;
+
+console.log(a); //prints 46
+console.log(b);//prints 23
+
+//Objects
+
+var obj1 = {
+    name: 'john',
+    age: 23
+}
+var obj2 = obj1;
+obj1.age = 46;
+ 
+console.log(obj1.age);//prints 46
+console.log(obj2.age); //prints 46 as this is also referencing the same variable
+
+
+//fucntions
+
+var age = 27;
+
+var obj1= {
+    name: 'deepak',
+    city: 'Sydney'
+}
+
+function change(a,b){
+    a = 30;
+    b.city = 'Jaipur';
+}
+
+change(age,obj1);
+
+console.log(age);
+console.log(obj1.city);
+
+
