@@ -16,6 +16,9 @@ Person.prototype.calculateAge = function(){
     console.log(2018 - this.yearOfBirth);
 }
 
+//we can also use property in prototype
+Person.prototype.lastName = 'smith';
+
 var john = new Person('john',1991,'Teacher');
 var mark = new Person('mark',1980,'Designer');
 var jane = new Person('jane',1963,'Retired');
@@ -23,3 +26,8 @@ var jane = new Person('jane',1963,'Retired');
 john.calculateAge();
 mark.calculateAge();
 jane.calculateAge();
+
+console.log(john.lastName);
+console.log(mark.lastName);
+console.log(jane.lastName);
+
