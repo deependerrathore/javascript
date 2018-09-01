@@ -81,7 +81,7 @@ var obj1 = {
 }
 var obj2 = obj1;
 obj1.age = 46;
- 
+
 console.log(obj1.age);//prints 46
 console.log(obj2.age); //prints 46 as this is also referencing the same variable
 
@@ -119,7 +119,7 @@ function arrayCalc(arr,fn){
     for (let i = 0; i < arr.length; i++) {
         arrRes.push(fn(arr[i]));
     }
-
+    
     return arrRes;
 }
 
@@ -259,13 +259,13 @@ function interviewQuestion(job){
     return function(name){
         if(job ==='teacher'){
             console.log('What subject do you teach '+ name);
-
+            
         }else if(job === 'designer'){
             console.log(name +', Can you please tell me what is the meaning of UX design');
-
+            
         }else{
             console.log('Hello '+ name +', Could you please tell me what do you do?');
-
+            
         }
     }
 }
@@ -322,7 +322,7 @@ function arrayCalc(arr,fn){
     for (let i = 0; i < arr.length; i++) {
         arrRes.push(fn(arr[i]));
     }
-
+    
     return arrRes;
 }
 
@@ -360,13 +360,22 @@ c) correct answer (I would use a number for this)
 7. Suppose this code would be a plugin for other programmers to use in their code. So make sure that all your code is private and doesn't interfere with the other programmers code (Hint: we learned a special technique to do exactly that).
 */
 
-(function(){
+/*
+--- Expert level ---
+8. After you display the result, display the next random question, so that the game never ends (Hint: write a function for this and call it right after displaying the result)
+9. Be careful: after Task 8, the game literally never ends. So include the option to quit the game if the user writes 'exit' instead of the answer. In this case, DON'T call the function from task 8.
+10. Track the user's score to make the game more fun! So each time an answer is correct, add 1 point to the score (Hint: I'm going to use the power of closures for this, but you don't have to, just do this with the tools you feel more comfortable at this point).
+11. Display the score in the console. Use yet another method for this.
+*/
 
+
+(function(){
+    
     var Question = function(question,answers,correctAnswer){
         this.question = question;
         this.answers = answers;
         this.correctAnswer = correctAnswer;
-       
+        
     }
     
     Question.prototype.displayQuestion = function(){
@@ -376,13 +385,24 @@ c) correct answer (I would use a number for this)
         }
         
     }
-
-    Question.prototype.checkAnswer = function(answer){
+    
+    Question.prototype.checkAnswer = function(answer,callback){
+        var sc;
         if(this.correctAnswer === answer){
             console.log('Correct answer');
+            var sc = callback(true);
+
         }else{
             console.log('Wrong answer');
+            var sc = callback(false);
         }
+
+        this.displayScore(sc);    }
+
+    Question.prototype.displayScore = function(score){
+        console.log('your current score is : ' +score);
+        console.log('===============================================');
+        
     }
     var question1 = new Question('what is your first pet name?',['Dog','Cat','Goat'],0);
     var question2 = new Question('what is the capital of India?',['Bangalore','Mumbai','Delhi'],2);
@@ -390,20 +410,33 @@ c) correct answer (I would use a number for this)
     
     var questions = [question1,question2,question3];
     
-    
-    var random = Math.floor(Math.random() * questions.length );
-    
-    questions[random].displayQuestion();
+    function score(){
+        var sc = 0;
+        return function (correct){
+            if(correct){
+                sc++;
+            }
 
-    var answer = parseInt(prompt('Please select the correct answer.'));
-
-    questions[random].checkAnswer(answer);
+            return sc; 
+        }
+    }
+    var keepScore = score();
+    function nextQuestion(){
+        var random = Math.floor(Math.random() * questions.length );
+        
+        questions[random].displayQuestion();
+        
+        var answer = prompt('Please select the correct answer.');
+        
+        if(answer !== 'exit'){
+            questions[random].checkAnswer(parseInt(answer),keepScore);
+            nextQuestion();
+        }
+        
+        
+    }
+    nextQuestion();
+    
+    
 })();
 
-/*
---- Expert level ---
-8. After you display the result, display the next random question, so that the game never ends (Hint: write a function for this and call it right after displaying the result)
-9. Be careful: after Task 8, the game literally never ends. So include the option to quit the game if the user writes 'exit' instead of the answer. In this case, DON'T call the function from task 8.
-10. Track the user's score to make the game more fun! So each time an answer is correct, add 1 point to the score (Hint: I'm going to use the power of closures for this, but you don't have to, just do this with the tools you feel more comfortable at this point).
-11. Display the score in the console. Use yet another method for this.
-*/
