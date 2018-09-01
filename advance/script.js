@@ -207,6 +207,7 @@ game();
 
 */
 
+/*
 
 // CLOSURES
 
@@ -229,7 +230,7 @@ retirementICE(1990);
 
 //retirement(66)(1991);
 
-/*
+
 //INTERVIEW QUESTIONS without CLOSURE
 function interviewQuestion(job) {
     if(job === 'teacher'){
@@ -249,10 +250,10 @@ function interviewQuestion(job) {
     }
 }
 
-*/
 
 
-//INTERVIEW QUESTIONS without CLOSURE
+
+//INTERVIEW QUESTIONS with CLOSURE
 
 function interviewQuestion(job){
     return function(name){
@@ -270,3 +271,32 @@ function interviewQuestion(job){
 }
 
 interviewQuestion('teacher')('john');
+
+*/
+
+
+//Bind, call and apply
+
+var john = {
+    name: 'john',
+    age: 26,
+    job: 'teacher',
+    persentation: function(style, timeOfDay){
+        if(style ==='formal'){
+            console.log('Good '+ timeOfDay+ ', Ladies and Gentlemen! I\'m '+this.name+' I\'m a ' +this.job+ ' I\'m '+ this.age+' years old');
+        }else if(style ==='friendly'){
+            console.log('Whats up guys I\'m '+this.name+' I\'m a ' +this.job+ ' I\'m '+ this.age+' years old. Have a nice ' + timeOfDay);
+            
+        }
+    }
+}
+
+var emily ={
+    name:'emily',
+    age: 35,
+    job: 'teacher'
+}
+
+john.persentation('formal','morning'); 
+
+john.persentation.call(emily,'friendly','afternoon');
