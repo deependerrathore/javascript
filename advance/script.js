@@ -300,3 +300,6 @@ var emily ={
 john.persentation('formal','morning'); 
 
 john.persentation.call(emily,'friendly','afternoon');
+
+//will see apply funciton alter
+//john.persentation.apply(emily,['friendly','afternoon']);
