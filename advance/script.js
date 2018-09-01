@@ -361,6 +361,7 @@ c) correct answer (I would use a number for this)
 */
 
 (function(){
+
     var Question = function(question,answers,correctAnswer){
         this.question = question;
         this.answers = answers;
@@ -368,36 +369,35 @@ c) correct answer (I would use a number for this)
        
     }
     
-    
+    Question.prototype.displayQuestion = function(){
+        console.log(this.question);
+        for (let i = 0; i < this.answers.length; i++) {
+            console.log(i +':'+this.answers[i]);
+        }
+        
+    }
+
+    Question.prototype.checkAnswer = function(answer){
+        if(this.correctAnswer === answer){
+            console.log('Correct answer');
+        }else{
+            console.log('Wrong answer');
+        }
+    }
     var question1 = new Question('what is your first pet name?',['Dog','Cat','Goat'],0);
     var question2 = new Question('what is the capital of India?',['Bangalore','Mumbai','Delhi'],2);
     var question3 = new Question('Who is the second biggest IT company in India?',['TCS','Wipro','Infosys'],2);
     
-    var allQuestion = [question1,question2,question3];
+    var questions = [question1,question2,question3];
     
-    function showQuestion(){
-        var random = Math.floor(Math.random() * 3 );
-        
-        console.log(allQuestion[random].question);
-        for (let i = 0; i < allQuestion[random].answers.length; i++) {
-            console.log(i +':'+allQuestion[random].answers[i]);
-        }
     
-        var userInput = prompt('Enter you answer');
-        //console.log('User input: ' + userInput);
-        //console.log('Answer: ' + allQuestion[random].correctAnswer);
-        correctAnswer(userInput,allQuestion[random].correctAnswer); 
-    }
+    var random = Math.floor(Math.random() * questions.length );
     
-    function correctAnswer(userInput,correctAnswer) {
-        if(userInput == correctAnswer){
-            console.log('Correct answer');
-        }else{
-           console.log('Wrong answer');
-        }
-    }
-    showQuestion();
-    
+    questions[random].displayQuestion();
+
+    var answer = parseInt(prompt('Please select the correct answer.'));
+
+    questions[random].checkAnswer(answer);
 })();
 
 /*
