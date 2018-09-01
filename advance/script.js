@@ -150,6 +150,7 @@ console.log(rates);
 
 */
 
+/*
 //Function return functions
 function interviewQuestion(job) {
     if(job === 'teacher'){
@@ -179,3 +180,26 @@ interviewQuestion()('rinku');
 
 
 
+*/
+
+//Immediately invoked funciton expression - IIFE
+
+//NORMAL WAY
+function game() {
+    var score = Math.random() * 10;
+    console.log(score >=5);
+}
+game();
+
+//IIFE without argument
+
+(function(){
+    var score = Math.random() * 10;
+    console.log(score >=5);
+})();
+
+//IIFE with argument
+(function(goodLuck){
+    var score = Math.random() * 10;
+    console.log(score >=(5-goodLuck));
+})(3);
