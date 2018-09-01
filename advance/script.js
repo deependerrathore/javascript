@@ -303,3 +303,42 @@ john.persentation.call(emily,'friendly','afternoon');
 
 //will see apply funciton alter
 //john.persentation.apply(emily,['friendly','afternoon']);
+
+//Bind allows us to preset some arguments, in below case friendly
+var johnFriendly = john.persentation.bind(john,'friendly');
+
+johnFriendly('good night!');
+johnFriendly('morning');
+
+var emilyFormal = john.persentation.bind(emily,'formal');
+
+emilyFormal('evening');
+
+
+var years = [1990,2005,1963,1986,2011];
+
+function arrayCalc(arr,fn){
+    arrRes = [];
+    for (let i = 0; i < arr.length; i++) {
+        arrRes.push(fn(arr[i]));
+    }
+
+    return arrRes;
+}
+
+function calculateAge(el){
+    return 2018 - el;
+}
+
+function isLegalAge(limit,el){
+    return el >= limit;
+}
+
+var ages = arrayCalc(years,calculateAge);
+
+var legalJapan = arrayCalc(ages,isLegalAge.bind(this,20)); // this will create a copy of original function
+
+console.log(ages);
+console.log(legalJapan);
+
+
