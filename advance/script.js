@@ -182,7 +182,8 @@ interviewQuestion()('rinku');
 
 */
 
-//Immediately invoked funciton expression - IIFE
+/*
+//Immediately invoked function expression - IIFE
 
 //NORMAL WAY
 function game() {
@@ -203,3 +204,69 @@ game();
     var score = Math.random() * 10;
     console.log(score >=(5-goodLuck));
 })(3);
+
+*/
+
+
+// CLOSURES
+
+function retirement(retirementAge){
+    var a = ' years left untile retirement';
+    return function(yearOfBirth){
+        var age= 2018 - yearOfBirth;
+        console.log((retirementAge - age) + a);
+    }
+}
+
+
+var retirementUS = retirement(66);
+var retirementIN = retirement(65);
+var retirementICE = retirement(67);
+
+retirementUS(1990);
+retirementIN(1990);
+retirementICE(1990);
+
+//retirement(66)(1991);
+
+/*
+//INTERVIEW QUESTIONS without CLOSURE
+function interviewQuestion(job) {
+    if(job === 'teacher'){
+        return function(name){
+            console.log('What subject do you teach '+ name);
+            
+        }
+    }else if( job === 'designer'){
+        return function(name){
+            console.log(name +', Can you please tell me what is the meaning of UX design');
+        }
+    }else{
+        return function(name){
+            console.log('Hello '+ name +', Could you please tell me what do you do?');
+            
+        }
+    }
+}
+
+*/
+
+
+//INTERVIEW QUESTIONS without CLOSURE
+
+function interviewQuestion(job){
+    return function(name){
+        if(job ==='teacher'){
+            console.log('What subject do you teach '+ name);
+
+        }else if(job === 'designer'){
+            console.log(name +', Can you please tell me what is the meaning of UX design');
+
+        }else{
+            console.log('Hello '+ name +', Could you please tell me what do you do?');
+
+        }
+    }
+}
+
+interviewQuestion('teacher')('john');
