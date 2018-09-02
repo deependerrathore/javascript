@@ -71,7 +71,7 @@ var UIController = (function(){
             return {
                 type: document.querySelector(DOMStrings.inputType).value,// income or expense
                 description: document.querySelector(DOMStrings.inputDescription).value,
-                value: document.querySelector(DOMStrings.inputValue).value
+                value: parseFloat(document.querySelector(DOMStrings.inputValue).value)
             }
             
         },
@@ -86,75 +86,81 @@ var UIController = (function(){
                 element = DOMStrings.expensesContainer;
                 html = '<div class="item clearfix" id="expense-%id%"><div class="item__description">%description%</div><div class="right clearfix"><div class="item__value">%value%</div><div class="item__percentage">21%</div><div class="item__delete"><button class="item__delete--btn"><i class="ion-ios-close-outline"></i></button></div></div></div>';
             }
-                //Replace the placeholder text with acutal data
-                newHtml = html.replace('%id%',obj.id);
-                newHtml = newHtml.replace('%description%',obj.description);
-                newHtml = newHtml.replace('%value%',obj.value);
-                //Insert the HTML into to DOM
-                document.querySelector(element).insertAdjacentHTML('beforeend',newHtml);
-            },
-            clearFields:function(){
-                var fields,fieldsArr;
-                fields = document.querySelectorAll(DOMStrings.inputDescription+','+DOMStrings.inputValue);
-                fieldsArr = Array.prototype.slice.call(fields);
-                
-                fieldsArr.forEach(function(current,index,array){
-                    current.value = "";
-                });
-
-                fieldsArr[0].focus();
-            },
-            getDOMStrings: function(){
-                return DOMStrings;
-            }
-        };
-    })();
-    
-    
-    //GLOBAL APP CONTROLLER
-    var controller = (function(budgetCtrl,UICtrl){
-        
-        var setupEventListeners = function(){
+            //Replace the placeholder text with acutal data
+            newHtml = html.replace('%id%',obj.id);
+            newHtml = newHtml.replace('%description%',obj.description);
+            newHtml = newHtml.replace('%value%',obj.value);
+            //Insert the HTML into to DOM
+            document.querySelector(element).insertAdjacentHTML('beforeend',newHtml);
+        },
+        clearFields:function(){
+            var fields,fieldsArr;
+            fields = document.querySelectorAll(DOMStrings.inputDescription+','+DOMStrings.inputValue);
+            fieldsArr = Array.prototype.slice.call(fields);
             
-            var DOM = UICtrl.getDOMStrings();
-            
-            document.querySelector(DOM.inputAddBtn).addEventListener('click',ctrlAddItem);
-            
-            document.addEventListener('keypress',function(event){
-                if(event.keyCode===13 || event.which === 13){
-                    ctrlAddItem();            
-                }
+            fieldsArr.forEach(function(current,index,array){
+                current.value = "";
             });
-        };
+            
+            fieldsArr[0].focus();
+        },
+        getDOMStrings: function(){
+            return DOMStrings;
+        }
+    };
+})();
+
+
+//GLOBAL APP CONTROLLER
+var controller = (function(budgetCtrl,UICtrl){
+    
+    var setupEventListeners = function(){
         
+        var DOM = UICtrl.getDOMStrings();
         
-        var ctrlAddItem = function(){
-            var input , newItem;
-            // 1. Get the field input data
-            input = UICtrl.getinput();
+        document.querySelector(DOM.inputAddBtn).addEventListener('click',ctrlAddItem);
+        
+        document.addEventListener('keypress',function(event){
+            if(event.keyCode===13 || event.which === 13){
+                ctrlAddItem();            
+            }
+        });
+    };
+    
+    var updateBudget = function(){
+        // 1. Calculate the budget
+        // 2. return the budget
+        // 3. Display the budget on the UI
+    }
+    var ctrlAddItem = function(){
+        var input , newItem;
+        // 1. Get the field input data
+        input = UICtrl.getinput();
+        
+        if(input.description !== "" && !isNaN(input.value) && input.value > 0){
             
             // 2. Add the item to the budget controller
             newItem = budgetCtrl.addItem(input.type,input.description,input.value);
             
             // 3. Add the item to the UI 
             UICtrl.addListItem(newItem,input.type);
-
-            //4. Clear the fileds
+            
+            // 4. Clear the fileds
             UICtrl.clearFields();
-
-            // 4. Calculate the budget
-            // 5. Display the budget on the UI
             
-            
-        };
+            // 5. Calculate and update budget
+            updateBudget();
+        }
         
-        return{
-            init: function(){
-                console.log('Application started');
-                setupEventListeners();
-            }
-        };
-        
-    })(budgetController,UIController);
+    };
     
-    controller.init();
+    return{
+        init: function(){
+            console.log('Application started');
+            setupEventListeners();
+        }
+    };
+    
+})(budgetController,UIController);
+
+controller.init();
