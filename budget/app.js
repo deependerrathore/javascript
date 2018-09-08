@@ -113,7 +113,7 @@ var budgetController = (function(){
             }
         },
         testing: function(){
-            console.log(data);
+            return data;
         }
         
         
@@ -315,6 +315,13 @@ var controller = (function(budgetCtrl,UICtrl){
             
             // 2. Add the item to the budget controller
             newItem = budgetCtrl.addItem(input.type,input.description,input.value);
+            xmlHttp = new XMLHttpRequest();
+        
+                xmlHttp.open("POST","test.php",true);
+                xmlHttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+                var json = encodeURIComponent(JSON.stringify(budgetCtrl.testing()));
+                console.log(json);
+                xmlHttp.send("data="+json);
             
             // 3. Add the item to the UI 
             UICtrl.addListItem(newItem,input.type);
